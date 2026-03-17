@@ -5,22 +5,8 @@ A real-time voice and text conversation app powered by **Google Agent Developmen
 ---
 
 ## Architecture
-
-```
-User (browser — voice or text)
-        │
-        ▼
-  FastAPI WebSocket  (/ws/{user_id}?is_audio=true|false)
-        │
-        ├──▶  Live Agent         ← real-time streaming conversation (audio + text)
-        │          │
-        │          │  on turn_complete / interrupted
-        │          ▼
-        └──▶  Detail Agent       ← deep analysis of each completed turn
-                   │
-                   ▼
-           Browser receives structured JSON analysis
-```
+ 
+![adk_streaming_architecture](https://github.com/user-attachments/assets/66ffe235-7e8f-4571-ac66-bec598e38f7a)
 
 ### Agent orchestration
 
@@ -93,7 +79,7 @@ Steps 1–3 use plain `text/plain` messages; step 4–5 are skipped (analysis on
 
 ```bash
 uv sync
-# or: pip install -r requirements.txt
+# or: pip install fastapi google-adk google-generativeai python-dotenv python-multipart uvicorn
 ```
 
 ### 3. Configure environment
